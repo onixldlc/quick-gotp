@@ -5,7 +5,9 @@ import (
     "flag"
     "io/ioutil"
     "log"
+    _ "embed"
 )
+
 //go:embed secret.json.example
 var defaultConfig []byte
 
