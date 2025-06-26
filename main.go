@@ -31,7 +31,7 @@ func main() {
     
     otpDisplay.PrepareTerminal()
     
-    refreshRate := 250 * time.Millisecond
+    refreshRate := 82 * time.Millisecond
     ticker := time.NewTicker(refreshRate)
     defer ticker.Stop()
     
