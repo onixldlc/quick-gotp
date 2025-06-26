@@ -12,11 +12,17 @@ import (
 )
 
 func main() {
+    cfg := config.LoadConfig()
+
+    // Handle one-time mode
+    if cfg.OneTime {
+        display.DisplayOneTime(cfg.Credentials[0])
+        return
+    }
+
     // Hide the cursor and ensure it's restored on exit
     terminal.HideCursor()
     defer terminal.ShowCursor()
-    
-    cfg := config.LoadConfig()
     
     otpDisplay := display.New(cfg)
     

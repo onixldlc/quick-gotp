@@ -79,3 +79,9 @@ func (d *OTPDisplay) Update() {
     
     terminal.MoveCursorUp(1 + (len(d.config.Credentials) * 4) - 1)
 }
+
+func DisplayOneTime(cred config.Credential) {
+    otpCode := otp.Generate(cred.Secret)
+    timeLeft := otp.TimeRemaining(cred.Delay)
+    fmt.Printf("%s:%d\n", otpCode, timeLeft)
+}

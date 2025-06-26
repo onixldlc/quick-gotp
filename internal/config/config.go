@@ -19,21 +19,27 @@ type Credential struct {
 
 type Config struct {
     Credentials []Credential `json:"credentials"`
+    OneTime     bool
 }
 
 func LoadConfig() Config {
     tempFlag := flag.Bool("temp", false, "Use temporary mode with a provided secret")
     secretArg := flag.String("secret", "", "The secret to use in temporary mode")
     delayArg := flag.Int("delay", 30, "Time period in seconds for OTP refresh (default is 30 seconds)")
+    oneTimeFlag := flag.Bool("one-time", false, "Use one-time mode (not implemented yet)")
     flag.Parse()
 
+    if *oneTimeFlag && !*tempFlag {
+        log.Fatal("One-time mode (--one-time) can only be used with temporary mode (--temp)")
+    }
+
     if *tempFlag {
-        return loadTempConfig(*secretArg, *delayArg)
+        return loadTempConfig(*secretArg, *delayArg, *oneTimeFlag)
     }
     return loadFileConfig()
 }
 
-func loadTempConfig(secret string, delay int) Config {
+func loadTempConfig(secret string, delay int, oneTime bool) Config {
     if secret == "" {
         log.Fatal("Secret must be provided in temporary mode")
     }
@@ -46,6 +52,7 @@ func loadTempConfig(secret string, delay int) Config {
                 Delay:  delay,
             },
         },
+        OneTime: oneTime,
     }
 }
 
