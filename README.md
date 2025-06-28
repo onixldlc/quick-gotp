@@ -39,18 +39,25 @@ Create a `secret.json` file in the root directory with the following structure:
 ## Usage
 
 To run the application normally, use:
-```
+```sh
 go run main.go
+# or build and run the binary with
+go build -o build/quick-gotp ./main.go
+./build/quick-gotp
 ```
 
 To run the application with a temporary secret, use:
-```
+```sh
 go run main.go --temp --secret YOUR_TEMP_SECRET --delay YOUR_DELAY_IN_SECONDS
+# or run via executable
+./build/quick-gotp --temp --secret YOUR_TEMP_SECRET --delay YOUR_DELAY_IN_SECONDS
 ```
 
 To generate the otp once:
-```
+```sh
 go run main.go --temp --secret YOUR_TEMP_SECRET --delay YOUR_DELAY_IN_SECONDS --one-time
+# or run via executable
+./build/quick-gotp --temp --secret YOUR_TEMP_SECRET --delay YOUR_DELAY_IN_SECONDS --one-time
 ```
 
 If the `--delay` flag is not provided, it defaults to 30 seconds.
