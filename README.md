@@ -45,7 +45,7 @@ go run main.go
 
 To run the application with a temporary secret, use:
 ```
-go run main.go --temp YOUR_TEMP_SECRET --delay YOUR_DELAY_IN_SECONDS
+go run main.go --temp --secret YOUR_TEMP_SECRET --delay YOUR_DELAY_IN_SECONDS
 ```
 
 If the `--delay` flag is not provided, it defaults to 30 seconds.
