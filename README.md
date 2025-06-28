@@ -28,11 +28,23 @@ Quick-GOTP is a simple Go application that generates One-Time Passwords (OTPs) u
 
 Create a `secret.json` file in the root directory with the following structure:
 
+> [!NOTE]
+> you can also run the app once to generate `secret.json` automatically
+
 ```json
 {
-  "secret": "YOUR_SECRET_HERE",
-  "name": "YOUR_NAME_HERE",
-  "delay": 30
+  "credentials":[
+    {
+      "secret": "<your-secret>",
+      "name": "example1",
+      "delay": 30
+    }, 
+    {
+      "secret": "<your-secret>",
+      "name": "example2",
+      "delay": 30
+    }
+  ]
 }
 ```
 
