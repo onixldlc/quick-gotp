@@ -40,12 +40,12 @@ Create a `secret.json` file in the root directory with the following structure:
 
 To run the application normally, use:
 ```
-go run cmd/main.go
+go run main.go
 ```
 
 To run the application with a temporary secret, use:
 ```
-go run cmd/main.go --temp YOUR_TEMP_SECRET --delay YOUR_DELAY_IN_SECONDS
+go run main.go --temp YOUR_TEMP_SECRET --delay YOUR_DELAY_IN_SECONDS
 ```
 
 If the `--delay` flag is not provided, it defaults to 30 seconds.
